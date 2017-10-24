@@ -1,0 +1,21 @@
+Package: rjmonopoly
+Type: Package
+Title: Enable Order Selection of Monotonic Polynomials via Reversible Jump 
+Version: 0.0.0.9000
+Authors@R: person("Andrew", "Manderson", email = "andrew.manderson@research.uwa.edu.au",
+                  role = c("aut", "cre"))
+Description: Functions that enable appropriate order selection for monotonic
+    polynomials. Users provide their univariate polynomial data, and limits on 
+    the minimum and maximum allowable polynomial degrees. In return they
+    get samples from the posterior of both polynomial degree and regression 
+    parameters. 
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+  Rcpp (>= 0.12.13),
+  MonoPoly,
+    utils,
+    ggplot2
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1
