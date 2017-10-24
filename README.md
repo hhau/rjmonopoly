@@ -1,9 +1,9 @@
-README
+rjmonopoly: Automatic(ish) monotonic polynomial regression
 ================
 Andrew Manderson
 
-rjmonopoly
-==========
+Overview
+========
 
 This package enables users to fit monotonic polynomials of varying degree using a reversible jump sampler.
 
@@ -32,3 +32,11 @@ NB
 ==
 
 This sampler (and code) is currently very very delicate, and is likely to break, hang, and emit no errors. Sorry about that, I'll try to fix that in the future.
+
+To do:
+======
+
+-   A method for finding a good starting value for the variance parameter
+-   Diagnostics to identify samples that haven't performed appropriately
+-   Adaptive innovation variances?
+-   Multiple chains over multiple cores
