@@ -4,9 +4,9 @@
 \alias{rjmonopoly}
 \title{Reversible jump sampler for monotonic polynomials}
 \usage{
-rjmonopoly(x, y, d_min = 2, d_max = 10, iter = 50000, prior_prob = 0.5,
-  starting_var_val = 0.001, control = list(innov_sd_beta = 0.025,
-  innov_sd_var = 0.025), progress = TRUE)
+rjmonopoly(x, y, d_min = 2, d_max = 10, iter = 50000, prior_option = NA,
+  prior_prob = 0.5, starting_var_val = 0.001, control = list(innov_sd_beta
+  = 0.025, innov_sd_var = 0.025), progress = TRUE)
 }
 \arguments{
 \item{x}{vector of x values}
@@ -18,6 +18,9 @@ rjmonopoly(x, y, d_min = 2, d_max = 10, iter = 50000, prior_prob = 0.5,
 \item{d_max}{maximum allowable polynomial degree}
 
 \item{iter}{number of iterations}
+
+\item{prior_option}{if set to string "flat", then will use a flat prior over
+the allowable parameter space.}
 
 \item{prior_prob}{probability for binomial prior}
 

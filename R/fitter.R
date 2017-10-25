@@ -14,6 +14,8 @@
 #' @param control (optional) list for innovation variances
 #' @param progress turn the progress bar on / off, TRUE is default, and shows
 #' progress bar.
+#' @param prior_option if set to string "flat", then will use a flat prior over
+#' the allowable parameter space.
 #'
 #' @return object of type rjmonopol_fit containing lists of samples for all
 #' regression parameters
@@ -30,6 +32,7 @@ rjmonopoly <- function(
     d_min = 2,
     d_max = 10,
     iter = 50000,
+    prior_option = NA,
     prior_prob = 0.5,
     starting_var_val = 0.001,
     control = list(
@@ -49,6 +52,20 @@ rjmonopoly <- function(
 
   # define the prior distribution
   prior_vec <- genDimPrior(d_min, d_max, prior_prob)
+
+  if (!missing(prior_option)) {
+    if (prior_option == "flat") {
+      # you need to pad this vector with zeros at the front, so that it has length
+      # d_max. This is because elsewhere you use d / d_prop to get the dimension
+      # prior probability.
+      prior_vec <- c(rep(0, d_min - 1),
+                     rep(1/length(d_min:d_max), length(d_min:d_max)))
+
+    } else {
+        stop("Unknown prior option, stopping")
+
+      }
+  }
 
   d_init <- round(median(d_min:d_max))
   beta_init_full <- coef(MonoPoly::monpol(y_rescl ~ x_rescl, degree = d_max, a = 0, b = 1))

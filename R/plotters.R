@@ -4,11 +4,12 @@
 #'
 #' @param obj object of type "rjmonopolyfit" for plotting
 #' @param ... other optional parameters for controlling plot style
+#' @param only if specified, plot only the barplot
 #'
 #' @return obj
 #' @export
 #'
-plotDegreePost <- function(obj, ...) {
+plotDegreePost <- function(obj, only = "barplot", ...) {
   if (!class(obj) == "rjmonopolyfit") {
     print("Incorrect object type")
     return(NULL)
@@ -16,12 +17,20 @@ plotDegreePost <- function(obj, ...) {
   }
 
   samples <- obj$d_samples
-  par(mfrow = c(2,1))
-  barplot(table(samples) / length(samples), xlab = "Polynomial degree", ylab = "Posterior probability")
-  plot(samples, xlab = "Sample index", ylab = "Polynomial degree", type = "l")
-  # dev.off()
-  par(mfrow = c(1,1))
+
+  if (missing(only)) {
+    par(mfrow = c(2,1))
+    barplot(table(samples) / length(samples), xlab = "Polynomial degree", ylab = "Posterior probability")
+    plot(samples, xlab = "Sample index", ylab = "Polynomial degree", type = "l")
+    # dev.off()
+    par(mfrow = c(1,1))
+
+  } else if (only == "barplot") {
+    barplot(table(samples) / length(samples), xlab = "Polynomial degree", ylab = "Posterior probability")
+  }
+
   invisible(obj)
+
 }
 
 #' Plot of fitted curve, with credible interval. Either uses the posterior

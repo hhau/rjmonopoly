@@ -4,10 +4,12 @@
 \alias{plotDegreePost}
 \title{Title}
 \usage{
-plotDegreePost(obj, ...)
+plotDegreePost(obj, only = "barplot", ...)
 }
 \arguments{
 \item{obj}{object of type "rjmonopolyfit" for plotting}
+
+\item{only}{if specified, plot only the barplot}
 
 \item{...}{other optional parameters for controlling plot style}
 }

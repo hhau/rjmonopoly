@@ -41,3 +41,4 @@ To do:
 -   Adaptive innovation variances?
 -   Multiple chains over multiple cores
 -   A whole lot of these functions should be ported to `c++`, because some chains need to run for millions of iterations, and no one wants to wait for `R` to do that.
+-   Flat prior option.
