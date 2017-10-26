@@ -50,6 +50,12 @@ rjmonopoly <- function(
   x_rescl <- (x - min(x)) / (diff(range(x)))
   y_rescl <- (y - min(y)) / (diff(range(y)))
 
+  temp_df <- data.frame(x_rescl = x_rescl, y_rescl = y_rescl)
+  temp_df <- temp_df[order(temp_df$x_rescl),]
+
+  x_rescl <- temp_df$x_rescl
+  y_rescl <- temp_df$y_rescl
+
   # define the prior distribution
   prior_vec <- genDimPrior(d_min, d_max, prior_prob)
 

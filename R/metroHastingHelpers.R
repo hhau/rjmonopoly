@@ -68,8 +68,8 @@ calcPostRatio <- function(gamma_prop, gamma_curr, var_prop, var_curr, Q_full,
 
   # likelihood term, evaled on the logscale and co-ordinatewise, for speed and
   # precision
-  ratio <- sum(dnorm(x = t(y_vec), mean = t(mu_prop), sd = sqrt(var_prop), log = TRUE)) -
-    sum(dnorm(x = t(y_vec), mean = t(mu_curr), sd = sqrt(var_curr), log = TRUE))
+  ratio <- sum(dnorm(x = (y_vec), mean = (mu_prop), sd = sqrt(var_prop), log = TRUE)) -
+    sum(dnorm(x = (y_vec), mean = (mu_curr), sd = sqrt(var_curr), log = TRUE))
 
   ratio <- exp(ratio)
   return(ratio * var_prior_ratio * dim_prior_ratio * mono_modifier)

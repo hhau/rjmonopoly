@@ -66,7 +66,7 @@ plotFit <- function(obj, mode = "mean", degree = NA, ...) {
   }
 
   gamma_samples <- obj$gamma_samples
-  gamma_samples <- returnSamplesOfLengthN(gamma_samples, (plot_deg + 1))
+  gamma_samples <- rjmonopoly:::returnSamplesOfLengthN(gamma_samples, (plot_deg + 1))
 
   gamma_mean <- apply(gamma_samples, 2, mean)
 
@@ -78,12 +78,12 @@ plotFit <- function(obj, mode = "mean", degree = NA, ...) {
   # how to plot using fitted values, but with original scale? I solved this once
   # somewhere else.
 
-  plot_x <- .unscale(obj$x, obj$scaling_factors$x)
+  plot_x <- rjmonopoly:::.unscale(obj$x, obj$scaling_factors$x)
 
-  plot_y <- .unscale(obj$y, obj$scaling_factors$y)
-  plot_mean <- .unscale(fitted_mean, obj$scaling_factors$y)
-  plot_upper <- .unscale(fitted_upper, obj$scaling_factors$y)
-  plot_lower <- .unscale(fitted_lower, obj$scaling_factors$y)
+  plot_y <- rjmonopoly:::.unscale(obj$y, obj$scaling_factors$y)
+  plot_mean <- rjmonopoly:::.unscale(fitted_mean, obj$scaling_factors$y)
+  plot_upper <- rjmonopoly:::.unscale(fitted_upper, obj$scaling_factors$y)
+  plot_lower <- rjmonopoly:::.unscale(fitted_lower, obj$scaling_factors$y)
 
   plot_df <- data.frame(x = plot_x, y = plot_y, fitted = plot_mean,
                         lower = plot_lower, upper = plot_upper)
