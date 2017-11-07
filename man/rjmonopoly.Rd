@@ -38,6 +38,9 @@ regression parameters
 \description{
 Other notes
 }
+\details{
+Note that the samples for Gamma and Sigma^2 are on the orthonormal scale.
+}
 \examples{
 library(fda)
 x <- onechild$day

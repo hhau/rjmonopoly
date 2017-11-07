@@ -31,14 +31,14 @@ I intend on adding more / some sensible generics, once I figure out what those s
 NB
 ==
 
-This sampler (and code) is currently very very delicate, and is likely to break, hang, and emit no errors. Sorry about that, I'll try to fix that in the future.
+This sampler (and code) is currently delicate, and is likely to break, hang, and emit no errors. Sorry about that, it's on my to do list.
 
 To do:
 ======
 
 -   A method for finding a good starting value for the variance parameter
--   Diagnostics to identify samples that haven't performed appropriately
+-   Diagnostics to identify sample chains that haven't performed appropriately
 -   Adaptive innovation variances?
 -   Multiple chains over multiple cores
 -   A whole lot of these functions should be ported to `c++`, because some chains need to run for millions of iterations, and no one wants to wait for `R` to do that.
--   Flat prior option.
+-   ~~Flat prior option.~~

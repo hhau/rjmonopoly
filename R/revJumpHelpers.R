@@ -146,8 +146,6 @@ calcAcceptProb <- function(gamma_prop, gamma_curr, d_prop, d_curr, d_min, d_max,
 
   }
 
-  # print("Acceptance probability is:")
-  # print(accept_prob)
 
   return(accept_prob)
 

@@ -4,6 +4,8 @@
 #'
 #' Other notes
 #'
+#' Note that the samples for Gamma and Sigma^2 are on the orthonormal scale.
+#'
 #' @param x vector of x values
 #' @param y vector of y values
 #' @param d_min minimum allowable polynomial degree
