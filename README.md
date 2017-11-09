@@ -19,7 +19,10 @@ Overview
 
 To fit, simply call the rjmonopoly function:
 
-    fit <- rjmonopoly::rjmonopoly(x, y, d_min = 2, d_max = 10)
+    library(fda)
+    x <- onechild$day
+    y <- onechild$height  
+    fit <- rjmonopoly::rjmonopoly(x, y)
 
 The help file should be reasonably self-explanatory for the other parameters. At the moment there are only rudamentary plotting functions avaliable.
 
