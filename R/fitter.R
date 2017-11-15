@@ -13,11 +13,11 @@
 #' @param iter number of iterations
 #' @param prior_prob probability for binomial prior
 #' @param starting_var_val starting value for variance
-#' @param control (optional) list for innovation variances
-#' @param progress turn the progress bar on / off, TRUE is default, and shows
-#' progress bar.
-#' @param prior_option if set to string "flat", then will use a flat prior over
-#' the allowable parameter space.
+#' @param control (optional) list of innovation variances
+#' @param progress turn the progress bar on / off. TRUE is  the default, and
+#' will show the progress bar.
+#' @param prior_option if NA is replaced with the string: "flat", then a flat
+#' prior for the variance will be used instead of a pseudo binomial prior.
 #'
 #' @return object of type rjmonopol_fit containing lists of samples for all
 #' regression parameters

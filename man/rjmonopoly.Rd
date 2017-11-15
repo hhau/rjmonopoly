@@ -19,17 +19,17 @@ rjmonopoly(x, y, d_min = 2, d_max = 10, iter = 50000, prior_option = NA,
 
 \item{iter}{number of iterations}
 
-\item{prior_option}{if set to string "flat", then will use a flat prior over
-the allowable parameter space.}
+\item{prior_option}{if NA is replaced with the string: "flat", then a flat
+prior for the variance will be used instead of a pseudo binomial prior.}
 
 \item{prior_prob}{probability for binomial prior}
 
 \item{starting_var_val}{starting value for variance}
 
-\item{control}{(optional) list for innovation variances}
+\item{control}{(optional) list of innovation variances}
 
-\item{progress}{turn the progress bar on / off, TRUE is default, and shows
-progress bar.}
+\item{progress}{turn the progress bar on / off. TRUE is  the default, and
+will show the progress bar.}
 }
 \value{
 object of type rjmonopol_fit containing lists of samples for all
