@@ -3,5 +3,6 @@
 export(plotDegreePost)
 export(plotFit)
 export(rjmonopoly)
+export(thin)
 importFrom(Rcpp,sourceCpp)
 useDynLib(rjmonopoly)

@@ -19,6 +19,3 @@ A named list consisting of Q and R_inv(erse)
 Generate the orthonormal polynomial basis matrix Q and the requisite inverse
 matrix R_inv.
 }
-\examples{
-genAllMatrices(runif(10, 0 ,1), 6)
-}

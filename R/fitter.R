@@ -147,9 +147,9 @@ rjmonopoly <- function(
     }
   }
 
-  res <- list(gamma_samples = gamma_samples,
-              var_samples = var_samples,
-              d_samples = d_samples,
+  res <- list(gamma_samples = gamma_samples[-1],
+              var_samples = var_samples[-1],
+              d_samples = d_samples[-1],
               n_accepted = n_accept,
               scaling_factors = list(
                 y = list(min = min(y),

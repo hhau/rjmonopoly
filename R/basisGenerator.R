@@ -10,8 +10,6 @@
 #'
 #' @return A named list consisting of Q and R_inv(erse)
 #'
-#' @examples
-#' genAllMatrices(runif(10, 0 ,1), 6)
 genAllMatrices <- function(x, d) {
   # generate the q, r_inverse matricies from a (column) vector of x values,
   # and a polynomial degree d.
