@@ -1,6 +1,6 @@
 Package: rjmonopoly
 Type: Package
-Title: Enable Order Selection of Monotonic Polynomials via Reversible Jump 
+Title: Order Selection of Monotonic Polynomials via Reversible Jump 
 Version: 0.0.0.9000
 Authors@R: person("Andrew", "Manderson", email = "andrew.manderson@research.uwa.edu.au",
                   role = c("aut", "cre"))

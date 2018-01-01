@@ -6,19 +6,21 @@
 #' @param obj object of type "rjmonopolyfit"
 #' @param thin_period period of thinned samples
 #' @param ... other
+#' @param warm_up number of samples that will be removed from the beggining of
+#' the original object
 #'
 #' @return an object of type rjmonopolyfit, with n_accepted changed to
 #' n_accepted_orig(inally)
 #' @export
 #'
-thin <- function(obj, thin_period, ...) {
+thin <- function(obj, thin_period, warm_up = 1, ...) {
 
   if (class(obj) != "rjmonopolyfit") {
     stop("Object not of type rjmonopolyfit")
   }
 
   n_samples <- length(obj$d_samples)
-  thin_vector <- seq(from = 1, to = n_samples, by = thin_period)
+  thin_vector <- seq(from = warm_up, to = n_samples, by = thin_period)
 
   res <- list(gamma_samples = obj$gamma_samples[thin_vector],
               var_samples = obj$var_samples[thin_vector],

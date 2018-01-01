@@ -4,12 +4,15 @@
 \alias{thin}
 \title{Thin an rjmonopolyfit}
 \usage{
-thin(obj, thin_period, ...)
+thin(obj, thin_period, warm_up = 1, ...)
 }
 \arguments{
 \item{obj}{object of type "rjmonopolyfit"}
 
 \item{thin_period}{period of thinned samples}
+
+\item{warm_up}{number of samples that will be removed from the beggining of
+the original object}
 
 \item{...}{other}
 }

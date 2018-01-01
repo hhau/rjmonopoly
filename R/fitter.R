@@ -24,10 +24,12 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' library(fda)
 #' x <- onechild$day
 #' y <- onechild$height
 #' fit <- rjmonopoly(x, y)
+#' }
 rjmonopoly <- function(
     x,
     y,
@@ -77,15 +79,17 @@ rjmonopoly <- function(
 
   d_init <- round(median(d_min:d_max))
   beta_init_full <- coef(MonoPoly::monpol(y_rescl ~ x_rescl, degree = d_max, a = 0, b = 1))
+  beta_init <- coef(MonoPoly::monpol(y_rescl ~ x_rescl, degree = d_init, a = 0, b = 1))
 
   qr_mats <- genAllMatrices(x_rescl, d_max)
   Q_full <- qr_mats[[1]]
   R_inv_full <- qr_mats[[2]]
 
   gamma_init_full <- betaToGamma(beta_init_full, R_inv_full)
+  gamma_init <- betaToGamma(beta_init, R_inv_full[1:length(beta_init), 1:length(beta_init)])
 
   gamma_samples <- list()
-  gamma_samples[[1]] <- gamma_init_full[1:(d_init + 1)]
+  gamma_samples[[1]] <- gamma_init
   innov_sd_beta <- control$innov_sd_beta
 
   var_samples <- matrix(NA, nrow = iter + 1, ncol = 1)

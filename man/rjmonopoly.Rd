@@ -42,8 +42,10 @@ Other notes
 Note that the samples for Gamma and Sigma^2 are on the orthonormal scale.
 }
 \examples{
+\dontrun{
 library(fda)
 x <- onechild$day
 y <- onechild$height
 fit <- rjmonopoly(x, y)
+}
 }
