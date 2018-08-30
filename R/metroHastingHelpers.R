@@ -51,20 +51,29 @@ calcPostRatio <- function(gamma_prop, gamma_curr, var_prop, var_curr, Q_full,
   mu_prop <- Q_full[, 1:(d_prop + 1)] %*% gamma_prop
   mu_curr <- Q_full[, 1:(d_curr + 1)] %*% gamma_curr
 
-  beta_prop <- gammaToBeta(gamma_prop,
-                           R_inv = R_inv_full[1:(length(gamma_prop)), 1:(length(gamma_prop))])
+  beta_prop <- gammaToBeta(
+    gamma_prop,
+    R_inv = R_inv_full[1:(length(gamma_prop)), 1:(length(gamma_prop))]
+  )
 
   mono_modifier <- 1
   if (!MonoPoly::ismonotone(beta_prop, a = 0, b = 1)) {
     mono_modifier <- 0
-
   }
   # flat prior on the variance, not always a good idea, here is where one
   # would change the prior on the variance.
-  var_prior_ratio <-  (1 / var_prop) / (1 / var_curr)
+  # change to half normal(0,1) - data is rescaled
+  var_prior_ratio <-  dnorm(x = var_prop, mean = 0, sd = 1) / dnorm(x = var_curr, mean = 0, sd = 1)
 
   # our own prior on the dimension
   dim_prior_ratio <- dim_prior_vec[d_prop] / dim_prior_vec[d_curr]
+
+  # need weakly informative prior on gamma - for correct behaviour
+  # asymptotically
+  gamma_prior_ratio <- exp(
+    sum(dnorm(x = gamma_prop, mean = 0, sd = 100, log = TRUE)) -
+    sum(dnorm(x = gamma_curr, mean = 0, sd = 100, log = TRUE))
+  )
 
   # likelihood term, evaled on the logscale and co-ordinatewise, for speed and
   # precision
@@ -72,7 +81,7 @@ calcPostRatio <- function(gamma_prop, gamma_curr, var_prop, var_curr, Q_full,
     sum(dnorm(x = (y_vec), mean = (mu_curr), sd = sqrt(var_curr), log = TRUE))
 
   ratio <- exp(ratio)
-  return(ratio * var_prior_ratio * dim_prior_ratio * mono_modifier)
+  return(ratio * var_prior_ratio * dim_prior_ratio * gamma_prior_ratio * mono_modifier)
 }
 
 #' Calculate the part of the acceptance probability pertaining to the proposal

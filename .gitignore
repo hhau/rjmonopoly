@@ -6,3 +6,8 @@ src/*.o
 src/*.so
 src/*.dll
 docs
+*.cpp
+
+*.o
+
+*.dll

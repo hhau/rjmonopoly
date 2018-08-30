@@ -106,33 +106,33 @@ rjmonopoly <- function(
   }
   for (ii in 2:(iter + 1)) {
     d_prop <- dimProposer(d_current = d_samples[ii - 1],
-                                       d_min = d_min,
-                                       d_max = d_max)
+                          d_min = d_min,
+                          d_max = d_max)
 
     var_prop <- genVarProp(var_prev = var_samples[ii - 1],
-                                        innov_sd_var = innov_sd_var)
+                           innov_sd_var = innov_sd_var)
 
     gamma_prop <- genGammaProp(current_gamma = gamma_samples[[ii - 1]],
-                                             d_prop = d_prop,
-                                             d_curr = d_samples[ii - 1],
-                                             innov_sigma = innov_sd_beta,
-                                             full_inits = gamma_init_full)
+                               d_prop = d_prop,
+                               d_curr = d_samples[ii - 1],
+                               innov_sigma = innov_sd_beta,
+                               full_inits = gamma_init_full)
 
     accept_probability <- calcAcceptProb(gamma_prop = gamma_prop,
-                                                      gamma_curr = gamma_samples[[ii - 1]],
-                                                      d_prop = d_prop,
-                                                      d_curr = d_samples[ii - 1],
-                                                      d_min = d_min,
-                                                      d_max = d_max,
-                                                      var_prop = var_prop,
-                                                      var_curr = var_samples[ii - 1],
-                                                      Q_full = Q_full,
-                                                      full_inits = gamma_init_full,
-                                                      y_vec = y_rescl,
-                                                      innov_sigma = innov_sd_beta,
-                                                      dim_prior_vec = prior_vec,
-                                                      innov_sd_var = innov_sd_var,
-                                                      R_inv_full = R_inv_full)
+                                         gamma_curr = gamma_samples[[ii - 1]],
+                                         d_prop = d_prop,
+                                         d_curr = d_samples[ii - 1],
+                                         d_min = d_min,
+                                         d_max = d_max,
+                                         var_prop = var_prop,
+                                         var_curr = var_samples[ii - 1],
+                                         Q_full = Q_full,
+                                         full_inits = gamma_init_full,
+                                         y_vec = y_rescl,
+                                         innov_sigma = innov_sd_beta,
+                                         dim_prior_vec = prior_vec,
+                                         innov_sd_var = innov_sd_var,
+                                         R_inv_full = R_inv_full)
 
     if (runif(1) < accept_probability) {
       gamma_samples[[ii]] <- gamma_prop
@@ -141,11 +141,12 @@ rjmonopoly <- function(
       n_accept <- n_accept + 1
 
     } else {
-      gamma_samples[[ii]] <- gamma_samples[[ii - 1]]
-      d_samples[ii] <- d_samples[ii - 1]
-      var_samples[ii] <- var_samples[ii - 1]
+        gamma_samples[[ii]] <- gamma_samples[[ii - 1]]
+        d_samples[ii] <- d_samples[ii - 1]
+        var_samples[ii] <- var_samples[ii - 1]
 
     }
+
     if (progress) {
       utils::setTxtProgressBar(pb = pb, value = ii)
     }

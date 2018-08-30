@@ -11,7 +11,7 @@ thin(obj, thin_period, warm_up = 1, ...)
 
 \item{thin_period}{period of thinned samples}
 
-\item{warm_up}{number of samples that will be removed from the beggining of
+\item{warm_up}{number of samples that will be removed from the begginning of
 the original object}
 
 \item{...}{other}

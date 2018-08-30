@@ -6,7 +6,7 @@
 #' @param obj object of type "rjmonopolyfit"
 #' @param thin_period period of thinned samples
 #' @param ... other
-#' @param warm_up number of samples that will be removed from the beggining of
+#' @param warm_up number of samples that will be removed from the begginning of
 #' the original object
 #'
 #' @return an object of type rjmonopolyfit, with n_accepted changed to
