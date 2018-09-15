@@ -22,9 +22,10 @@ This package is not in CRAN right now. Just install using devtools and github
 To fit, simply call the rjmonopoly function:
 
     library(fda)
+    library(rjmonopoly)
     x <- onechild$day
     y <- onechild$height  
-    fit <- rjmonopoly::rjmonopoly(x, y)
+    fit <- rjmonopoly(x, y)
     
 The help file should be reasonably self-explanatory for the other parameters.
 At the moment there are only rudamentary plotting functions avaliable.
